@@ -1,0 +1,638 @@
+
+SQL> desc students
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             CHAR(10)
+ NAME                                               CHAR(50)
+ DOB                                                DATE
+ COURSE_NAME                                        CHAR(10)
+
+SQL> SELECT * FROM students;
+
+no rows selected
+
+SQL>
+SQL> CREATE TABLE students2 AS
+  2  SELECT * FROM students;
+
+Table created.
+
+SQL> desc students2
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             CHAR(10)
+ NAME                                               CHAR(50)
+ DOB                                                DATE
+ COURSE_NAME                                        CHAR(10)
+
+SQL> create table students2 as select reg_no,name,dob,course_name from students
+  2  ;
+create table students2 as select reg_no,name,dob,course_name from students
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table students3 as select reg_no,name,dob,course_name from students2;
+
+Table created.
+
+SQL> desc students3
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             CHAR(10)
+ NAME                                               CHAR(50)
+ DOB                                                DATE
+ COURSE_NAME                                        CHAR(10)
+
+SQL> create table students4 as select reg_no,name,dob from students2;
+
+Table created.
+
+SQL> desc students4
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             CHAR(10)
+ NAME                                               CHAR(50)
+ DOB                                                DATE
+
+SQL> INSERT INTO students
+  2  VALUES ('11249A001', 'Taruni', DATE '2005-08-15', 'CSE');
+
+1 row created.
+
+SQL> INSERT INTO students
+  2  VALUES ('11249A002', 'Gowri', DATE '2004-12-20', 'IT');
+
+1 row created.
+
+SQL> INSERT INTO students
+  2  VALUES ('11249A003', 'Rahul', DATE '2005-03-10', 'AIML');
+
+1 row created.
+
+SQL> desc students2
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             CHAR(10)
+ NAME                                               CHAR(50)
+ DOB                                                DATE
+ COURSE_NAME                                        CHAR(10)
+
+SQL> select * from student2;
+select * from student2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from students;
+
+REG_NO     NAME                                               DOB
+---------- -------------------------------------------------- ---------
+COURSE_NAM
+----------
+11249A001  Taruni                                             15-AUG-05
+CSE
+
+11249A002  Gowri                                              20-DEC-04
+IT
+
+11249A003  Rahul                                              10-MAR-05
+AIML
+
+
+SQL> select * from students2;
+
+no rows selected
+
+SQL> desc students2;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             CHAR(10)
+ NAME                                               CHAR(50)
+ DOB                                                DATE
+ COURSE_NAME                                        CHAR(10)
+
+SQL> crate table students2 as select * from students
+SP2-0734: unknown command beginning "crate tabl..." - rest of line ignored.
+SQL> create table students2 as select as * from students
+  2  where 1>2;
+create table students2 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students2 as select as * from students
+  2  where 1+2=4;
+create table students2 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> CREATE TABLE students2 AS
+  2  SELECT * FROM students
+  3  WHERE 1 > 2;
+CREATE TABLE students2 AS
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table students2 as select as * from students
+  2  where 1 >2;
+create table students2 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select * from students
+  2  where 1 > 2;
+
+Table created.
+
+SQL> select * from students;
+
+REG_NO     NAME                                               DOB
+---------- -------------------------------------------------- ---------
+COURSE_NAM
+----------
+11249A001  Taruni                                             15-AUG-05
+CSE
+
+11249A002  Gowri                                              20-DEC-04
+IT
+
+11249A003  Rahul                                              10-MAR-05
+AIML
+
+
+SQL> select * from students5;
+
+no rows selected
+
+SQL> create table students5 as selected * from student;
+create table students5 as selected * from student
+                          *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> create table students5 as select * from student;
+create table students5 as select * from student
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table students6 as select * from students;
+
+Table created.
+
+SQL> desc students6
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             CHAR(10)
+ NAME                                               CHAR(50)
+ DOB                                                DATE
+ COURSE_NAME                                        CHAR(10)
+
+SQL> create table students5 as select as * from students;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students5 as select as * from students
+  2  where v>8;
+create table students5 as select as * from students
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create table students6 as select reg_no,name,dob,
+  2
+SQL> create table students6 as select reg_no,name,dob
+  2
+SQL> create table students6 as select reg_no,name,dob
+  2  from students where v>8;
+from students where v>8
+                    *
+ERROR at line 2:
+ORA-06553: PLS-306: wrong number or types of arguments in call to 'V'
+
+
+SQL> create table students6 as select reg_no,name,dob from students where 1 > 8;
+create table students6 as select reg_no,name,dob from students where 1 > 8
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table students7 as select reg_no,name,dob from students where 1 > 8;
+
+Table created.
+
+SQL> select * from students7
+  2  ;
+
+no rows selected
+
+SQL> after table students modify name char(10);
+SP2-0734: unknown command beginning "after tabl..." - rest of line ignored.
+SQL> ALTER TABLE students
+  2  MODIFY name CHAR(10);
+MODIFY name CHAR(10)
+       *
+ERROR at line 2:
+ORA-01441: cannot decrease column length because some value is too big
+
+
+SQL> ALTER TABLE students
+  2  MODIFY name CHAR(100);
+
+Table altered.
+
+SQL> desc students
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             CHAR(10)
+ NAME                                               CHAR(100)
+ DOB                                                DATE
+ COURSE_NAME                                        CHAR(10)
+
+SQL> drop table student4;
+drop table student4
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> drop table students4;
+
+Table dropped.
+
+SQL> rename  students to students1;
+
+Table renamed.
+
+SQL> insert into student1(reg_no,name,dob)
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00926: missing VALUES keyword
+
+
+SQL> insert into student1(reg_no,name,dob)
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00926: missing VALUES keyword
+
+
+SQL> INSERT INTO student1 (reg_no, name, dob)
+  2  VALUES ('11249A001', 'Taruni', DATE '2005-08-15');
+INSERT INTO student1 (reg_no, name, dob)
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> INSERT INTO students1 (reg_no, name, dob)
+  2  VALUES ('11249A001', 'Taruni', DATE '2005-08-15');
+
+1 row created.
+
+SQL> INSERT INTO students1 (reg_no, name, dob)
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00926: missing VALUES keyword
+
+
+SQL> INSERT INTO student1 (reg_no, name, dob, course_name)
+  2  VALUES ('11249A002', 'Rahul', DATE '2005-01-20', 'IT');
+INSERT INTO student1 (reg_no, name, dob, course_name)
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> INSERT INTO student1 (reg_no, name, dob, course_name)
+  2  VALUES ('11249A002','Gowri', DATE '2004-12-20');
+VALUES ('11249A002','Gowri', DATE '2004-12-20')
+*
+ERROR at line 2:
+ORA-00947: not enough values
+
+
+SQL> INSERT INTO student1 (reg_no, name, dob, course_name)
+  2  INSERT INTO student1 (reg_no, name, dob, course_name);
+INSERT INTO student1 (reg_no, name, dob, course_name)
+*
+ERROR at line 2:
+ORA-00926: missing VALUES keyword
+
+
+SQL> INSERT INTO student1 (reg_no, name, dob)
+  2  VALUES ('11249A002','Gowri', DATE '2004-12-20');
+INSERT INTO student1 (reg_no, name, dob)
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> INSERT INTO students1 (reg_no,name,dob)
+  2  VALUES ('11249A001', 'Taruni', DATE '2005-08-15');
+
+1 row created.
+
+SQL> INSERT INTO students1 (reg_no,name,dob)
+  2  VALUES ('11249A002', 'Gowri', DATE '2004-12-20')
+  3  ;
+
+1 row created.
+
+SQL> INSERT INTO students1 (reg_no,name,dob)
+  2  VALUES ('11249A003', 'Rahul', DATE '2005-03-10');
+
+1 row created.
+
+SQL> select * from students1;
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+11249A001
+Taruni
+
+15-AUG-05 CSE
+
+11249A002
+Gowri
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+
+20-DEC-04 IT
+
+11249A003
+Rahul
+
+10-MAR-05 AIML
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+
+11249A001
+Taruni
+
+15-AUG-05
+
+11249A001
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+Taruni
+
+15-AUG-05
+
+11249A002
+Gowri
+
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+20-DEC-04
+
+11249A003
+Rahul
+
+10-MAR-05
+
+
+7 rows selected.
+
+SQL> DELETE FROM students1
+  2  WHERE course_name IS NULL;
+
+4 rows deleted.
+
+SQL> select * from students1;
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+11249A001
+Taruni
+
+15-AUG-05 CSE
+
+11249A002
+Gowri
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+
+20-DEC-04 IT
+
+11249A003
+Rahul
+
+10-MAR-05 AIML
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+
+
+SQL> INSERT ALL
+  2      INTO students1 (reg_no, name, dob, course_name)
+  3      VALUES ('11249A009', 'Kiran', DATE '2005-01-15', 'CSE')
+  4      INTO students1 (reg_no, name, dob, course_name)
+  5      VALUES ('11249A010', 'Priya', DATE '2004-09-25', 'IT')
+  6      INTO students1 (reg_no, name, dob, course_name)
+  7      VALUES ('11249A011', 'Vijay', DATE '2005-06-30', 'AIML')
+  8  SELECT * FROM dual;
+
+3 rows created.
+
+SQL> select * from students1;
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+11249A001
+Taruni
+
+15-AUG-05 CSE
+
+11249A002
+Gowri
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+
+20-DEC-04 IT
+
+11249A003
+Rahul
+
+10-MAR-05 AIML
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+
+11249A009
+Kiran
+
+15-JAN-05 CSE
+
+11249A010
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+Priya
+
+25-SEP-04 IT
+
+11249A011
+Vijay
+
+
+REG_NO
+----------
+NAME
+--------------------------------------------------------------------------------
+DOB       COURSE_NAM
+--------- ----------
+30-JUN-05 AIML
