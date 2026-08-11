@@ -1,0 +1,186 @@
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Aug 11 14:39:03 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: A008@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> create table student
+  2      (
+  3      studentid char(10),
+  4      studentfee number(8,2),
+  5      studentname varchar(20)
+  6      );
+
+Table created.
+
+SQL> create table course
+  2      (
+  3      courseid char(10),
+  4      coursefee number(8,2),
+  5      coursename varchar(20)
+  6      );
+create table course
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> drop table course
+  2  ;
+drop table course
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys
+
+
+SQL> drop table course;
+drop table course
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys
+
+
+SQL> create table course1
+  2      (
+  3      courseid char(10),
+  4      coursefee number(8,2),
+  5      coursename varchar(20)
+  6      );
+create table course1
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> delete from course
+  2  ;
+
+0 rows deleted.
+
+SQL> create table course1
+  2      (
+  3      courseid char(10),
+  4      coursefee number(8,2),
+  5      coursename varchar(20)
+  6      );
+create table course1
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> drop table course1;
+
+Table dropped.
+
+SQL> create table course1
+  2      (
+  3      courseid char(10),
+  4      coursefee number(8,2),
+  5      coursename varchar(20)
+  6      );
+
+Table created.
+
+SQL> insert into course1 values(4,50000,'anju');
+
+1 row created.
+
+SQL> insert into course1 values(5,70000,'ravi');
+
+1 row created.
+
+SQL> desc course1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSEID                                           CHAR(10)
+ COURSEFEE                                          NUMBER(8,2)
+ COURSENAME                                         VARCHAR2(20)
+
+SQL> desc students
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                    NOT NULL CHAR(10)
+ NAME                                               CHAR(50)
+ DEPT_NAME                                          CHAR(10)
+ YEAR                                               NUMBER(1)
+
+SQL> desc student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENTID                                          CHAR(10)
+ STUDENTFEE                                         NUMBER(8,2)
+ STUDENTNAME                                        VARCHAR2(20)
+
+SQL> select * from course1
+  2  ;
+
+COURSEID    COURSEFEE COURSENAME
+---------- ---------- --------------------
+4               50000 anju
+5               70000 ravi
+
+SQL> Alter table course1 modify(courseid char(10) Primary key ,coursename varchar(20) not Null);
+
+Table altered.
+
+SQL> desc course1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSEID                                  NOT NULL CHAR(10)
+ COURSEFEE                                          NUMBER(8,2)
+ COURSENAME                                NOT NULL VARCHAR2(20)
+SQL> Alter table course1 modify(coursename varchar(25));
+
+Table altered.
+
+SQL> desc course1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSEID                                  NOT NULL CHAR(10)
+ COURSEFEE                                          NUMBER(8,2)
+ COURSENAME                                NOT NULL VARCHAR2(25)
+
+SQL> Alter table course1 add grade char;
+
+Table altered.
+
+SQL> desc course1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSEID                                  NOT NULL CHAR(10)
+ COURSEFEE                                          NUMBER(8,2)
+ COURSENAME                                NOT NULL VARCHAR2(25)
+ GRADE                                              CHAR(1)
+
+ Alter table course1 add(gender char,age number);
+
+Table altered.
+
+SQL> desc course1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSEID                                  NOT NULL CHAR(10)
+ COURSEFEE                                          NUMBER(8,2)
+ COURSENAME                                NOT NULL VARCHAR2(25)
+ GRADE                                              CHAR(1)
+ GENDER                                             CHAR(1)
+ AGE                                                NUMBER
+
+SQL> Alter table course1 drop column age;
+
+Table altered.
+
+SQL> desc course1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSEID                                  NOT NULL CHAR(10)
+ COURSEFEE                                          NUMBER(8,2)
+ COURSENAME                                NOT NULL VARCHAR2(25)
+ GRADE                                              CHAR(1)
+ GENDER                                             CHAR(1)
