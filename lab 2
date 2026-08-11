@@ -1,0 +1,84 @@
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Aug 11 15:45:00 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: A008@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> create table courses1(
+  2         courseid number(4) Primary key,
+  3         coursename varchar2(20)) Not null
+  4     );
+       coursename varchar2(20)) Not null
+                                *
+ERROR at line 3:
+ORA-00922: missing or invalid option
+
+
+SQL> create table courses1(
+  2         courseid number(4) Primary key,
+  3         coursename varchar2(20) Not null
+  4     );
+create table courses1(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table coursed(
+  2         courseid number(4) Primary key,
+  3         coursename varchar2(20) Not null
+  4     );
+
+Table created.
+
+SQL> desc coursed
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSEID                                  NOT NULL NUMBER(4)
+ COURSENAME                                NOT NULL VARCHAR2(20)
+
+SQL> create table studentd(
+  2      studentid char(10) Primary key,
+  3      studentname varchar2(20) Not Null,
+  4      email varchar(30),
+  5      courseid Not Null References course1(courseid)
+  6      );
+
+Table created.
+
+SQL> desc studentd
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENTID                                 NOT NULL CHAR(10)
+ STUDENTNAME                               NOT NULL VARCHAR2(20)
+ EMAIL                                              VARCHAR2(30)
+ COURSEID                                  NOT NULL CHAR(10)
+
+SQL> insert into coursed values(20,'Gowri');
+
+1 row created.
+
+SQL> insert into coursed values(25,'neha');
+
+1 row created.
+
+SQL> select * from coursed
+  2  ;
+
+  COURSEID COURSENAME
+---------- --------------------
+        20 Gowri
+        25 neha
+
+SQL> desc coursed
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSEID                                  NOT NULL NUMBER(4)
+ COURSENAME                                NOT NULL VARCHAR2(20)
+
+SQL>
