@@ -1,0 +1,175 @@
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Aug 18 14:12:27 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: A008@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> SELECT * FROM employee;
+
+     EMPID EMPNAME                  DEPTID     SALARY
+---------- -------------------- ---------- ----------
+       102 ravi                          8      40000
+       108 raju                          5      80000
+
+SQL> SELECT * FROM department;
+
+no rows selected
+
+SQL> SELECT * FROM department;
+
+no rows selected
+
+SQL> INSERT INTO department VALUES (8, 'Frontend');
+
+1 row created.
+
+SQL> INSERT INTO department VALUES (5, 'Backend');
+
+1 row created.
+
+SQL> INSERT INTO department VALUES (10, 'Testing');
+
+1 row created.
+
+SQL>
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT * FROM department;
+
+    DEPTID DEPNAME
+---------- --------------------
+         8 Frontend
+         5 Backend
+        10 Testing
+
+SQL> select * from employee
+  2  cross join department;
+
+     EMPID EMPNAME                  DEPTID     SALARY     DEPTID
+---------- -------------------- ---------- ---------- ----------
+DEPNAME
+--------------------
+       102 ravi                          8      40000          8
+Frontend
+
+       102 ravi                          8      40000          5
+Backend
+
+       102 ravi                          8      40000         10
+Testing
+
+
+     EMPID EMPNAME                  DEPTID     SALARY     DEPTID
+---------- -------------------- ---------- ---------- ----------
+DEPNAME
+--------------------
+       108 raju                          5      80000          8
+Frontend
+
+       108 raju                          5      80000          5
+Backend
+
+       108 raju                          5      80000         10
+Testing
+
+
+6 rows selected.
+on
+
+SQL> SELECT employee.empid,
+  2         employee.empname,
+  3         department.depname
+  4  FROM employee
+  5  JOIN department
+  6  ON employee.deptid = department.deptid;
+
+     EMPID EMPNAME              DEPNAME
+---------- -------------------- --------------------
+       102 ravi                 Frontend
+       108 raju                 Backend
+
+SQL> SELECT E1.empname AS EMPLOYEE1,
+  2         E2.empname AS EMPLOYEE2,
+  3         E1.deptid
+  4  FROM employee E1
+  5  JOIN employee E2
+  6  ON E1.deptid = E2.deptid
+  7  AND E1.empid <> E2.empid;
+
+no rows selected
+
+SQL> desc employee
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID                                              NUMBER
+ EMPNAME                                            VARCHAR2(20)
+ DEPTID                                             NUMBER
+ SALARY                                             NUMBER
+
+SQL> select * from employee
+  2  ;
+
+     EMPID EMPNAME                  DEPTID     SALARY
+---------- -------------------- ---------- ----------
+       102 ravi                          8      40000
+       108 raju                          5      80000
+
+SQL> INSERT INTO employee VALUES (110, 'suresh', 8, 45000);
+
+1 row created.
+
+SQL> SELECT * FROM employee;
+
+     EMPID EMPNAME                  DEPTID     SALARY
+---------- -------------------- ---------- ----------
+       110 suresh                        8      45000
+       102 ravi                          8      40000
+       108 raju                          5      80000
+
+SQL> SELECT E1.empname AS EMPLOYEE1,
+  2         E2.empname AS EMPLOYEE2,
+  3         E1.deptid
+  4  FROM employee E1
+  5  JOIN employee E2
+  6  ON E1.deptid = E2.deptid
+  7  AND E1.empid <> E2.empid;
+
+EMPLOYEE1            EMPLOYEE2                DEPTID
+-------------------- -------------------- ----------
+ravi                 suresh                        8
+suresh               ravi                          8
+
+SQL> SELECT employee.empid,
+  2         employee.empname,
+  3         department.depname
+  4  FROM employee
+  5  LEFT OUTER JOIN department
+  6  ON employee.deptid = department.deptid;
+
+     EMPID EMPNAME              DEPNAME
+---------- -------------------- --------------------
+       102 ravi                 Frontend
+       110 suresh               Frontend
+       108 raju                 Backend
+
+SQL> SELECT employee.empid,
+  2         employee.empname,
+  3         department.depname
+  4  FROM employee
+  5  LEFT OUTER JOIN department
+  6  ON employee.deptid = department.deptid;
+
+     EMPID EMPNAME              DEPNAME
+---------- -------------------- --------------------
+       102 ravi                 Frontend
+       110 suresh               Frontend
+       108 raju                 Backend
+
+SQL>
